@@ -7,6 +7,6 @@
 
   tasks:
     - include_tasks: tasks/update.yml
-    - include_tasks: tasks/system-packages.yml
+    - include_tasks: tasks/support-packages.yml
     - include_tasks: tasks/user-dir-setup.yml
     - include_tasks: tasks/nginx-setup.yml
