@@ -1,0 +1,19 @@
+---
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: restart cockpit
+  systemd:
+    name: cockpit.socket
+    state: restarted
+    enabled: yes
+
+- name: restart user-dir-manager
+  systemd:
+    name: user-dir-manager.path
+    state: restarted
+    daemon_reload: yes
+    enabled: yes

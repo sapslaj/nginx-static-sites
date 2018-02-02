@@ -1,0 +1,9 @@
+[Unit]
+Description=public_html user directory manager
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/user-dir-provision
+
+[Install]
+WantedBy=default.target

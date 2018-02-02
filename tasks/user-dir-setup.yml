@@ -1,0 +1,30 @@
+---
+- name: create public_html directory in /etc/skel
+  file:
+    path: /etc/skel/public_html
+    state: directory
+
+- name: copy starter index.html
+  copy:
+    src: files/starter-index.html
+    dest: /etc/skel/public_html/index.html
+
+- name: copy user-dir-provision script to /usr/libexec
+  copy:
+    src: files/user-dir-provision
+    dest: /usr/libexec/user-dir-provision
+    mode: u=rwx,g=rx,o=rx
+
+- name: copy user-dir-manager path unit
+  copy:
+    src: files/user-dir-manager.path
+    dest: /usr/lib/systemd/system/user-dir-manager.path
+  notify:
+    - restart user-dir-manager
+
+- name: copy user-dir-manager task service
+  copy:
+    src: files/user-dir-manager.service
+    dest: /usr/lib/systemd/system/user-dir-manager.service
+  notify:
+    - restart user-dir-manager

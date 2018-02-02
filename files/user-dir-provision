@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$(ls -A $DIR)" ]; then
+
+  for homedir in /home/*/; do
+
+    if [ ! -d "$homedir/public_html" ]; then
+      mkdir "$homedir/public_html"
+    fi
+
+    chown :www-data $homedir/public_html
+    chmod 711 $homedir
+    chmod -R 755 $homedir/public_html
+    chmod g+s $homedir/public_html
+    setfacl -R -d -m g::rx $homedir/public_html
+    chcon -Rt httpd_sys_content_t $homedir/public_html
+
+  done
+
+else
+
+  echo ERROR: No directories in /home
+  exit 1
+
+fi

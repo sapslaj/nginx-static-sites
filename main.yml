@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+
+  handlers:
+    - include: handlers/main.yml
+
+  tasks:
+    - include_tasks: tasks/update.yml
+    - include_tasks: tasks/system-packages.yml
+    - include_tasks: tasks/user-dir-setup.yml
+    - include_tasks: tasks/nginx-setup.yml

@@ -1,0 +1,29 @@
+---
+- name: install EPEL
+  yum:
+    name: epel-release
+    state: installed
+  when: ansible_distribution == 'CentOS'
+
+- name: install support packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - cockpit
+    - cockpit-selinux
+    - cockpit-storaged
+    - cockpit-networkmanager
+    - storaged
+  notify:
+    - restart cockpit
+
+- name: open firewall ports for base services
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: yes
+  with_items:
+    - cockpit
+  when: ansible_distribution == 'CentOS'

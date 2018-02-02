@@ -1,0 +1,8 @@
+[Unit]
+Description=User directory listener
+
+[Install]
+WantedBy=multi-user.target
+
+[Path]
+PathModified=/home
