@@ -10,3 +10,4 @@
     - include_tasks: tasks/support-packages.yml
     - include_tasks: tasks/user-dir-setup.yml
     - include_tasks: tasks/nginx-setup.yml
+    - include_tasks: tasks/fail2ban-setup.yml

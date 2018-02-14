@@ -1,0 +1,14 @@
+---
+- name: install fail2ban
+  package:
+    name: fail2ban
+    state: latest
+  notify:
+    - restart fail2ban
+
+- name: copy fail2ban config
+  copy:
+    src: files/jail.local
+    dest: /etc/fail2ban/jail.local
+  notify:
+    - restart fail2ban

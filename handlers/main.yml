@@ -11,6 +11,12 @@
     state: restarted
     enabled: yes
 
+- name: restart fail2ban
+  systemd:
+    name: fail2ban
+    state: restarted
+    enabled: yes
+
 - name: restart user-dir-manager
   systemd:
     name: user-dir-manager.path
