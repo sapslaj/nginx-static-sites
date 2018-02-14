@@ -6,7 +6,7 @@
   notify:
     - restart fail2ban
 
-- name: copy nginx config
+- name: copy fail2ban config
   copy:
     src: files/jail.local
     dest: /etc/fail2ban/jail.local
