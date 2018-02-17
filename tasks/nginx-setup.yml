@@ -28,3 +28,12 @@
   with_items:
     - http
   when: ansible_distribution == 'CentOS'
+
+- name: copy error files
+  copy:
+    src: files/html-root/{{ item }}
+    dest: /usr/share/nginx/html/{{ item }}
+  with_items:
+    - 403.html
+    - 404.html
+    - 50x.html
