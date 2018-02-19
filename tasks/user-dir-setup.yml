@@ -4,10 +4,12 @@
     path: /etc/skel/public_html
     state: directory
 
-- name: copy starter index.html
+- name: copy custom user html root files
   copy:
-    src: files/starter-index.html
-    dest: /etc/skel/public_html/index.html
+    src: "{{ item }}"
+    dest: /etc/skel/public_html/
+  with_fileglob:
+    - files/user-html-root/*
 
 - name: copy user-dir-provision script to /usr/libexec
   copy:
