@@ -28,3 +28,11 @@
   with_items:
     - http
   when: ansible_distribution == 'CentOS'
+
+- name: copy custom system html root files
+  copy:
+    src: "{{ item }}"
+    dest: /usr/share/nginx/html/
+  with_fileglob:
+    - files/system-html-root/*
+ 
