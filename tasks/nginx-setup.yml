@@ -34,5 +34,5 @@
     src: "{{ item }}"
     dest: /usr/share/nginx/html/
   with_fileglob:
-    - files/global-html-root/*
+    - files/system-html-root/*
  
